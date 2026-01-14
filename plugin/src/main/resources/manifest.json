@@ -9,5 +9,5 @@
   "Dependencies": {},
   "OptionalDependencies": {},
   "DisabledByDefault": false,
-  "Main": "com.craftlyworks.hypsum.HypsumPlugin"
+  "Main": "com.craftlyworks.hypsum.plugin.HypsumPlugin"
 }
