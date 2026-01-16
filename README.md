@@ -29,7 +29,7 @@ Add this to your `build.gradle` or `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    compileOnly("com.craftlyworks.hypsum:api:1.0")
+    compileOnly("com.craftlyworks.hypsum:api:1.1")
 }
 ```
 
@@ -37,7 +37,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    compileOnly 'com.craftlyworks.hypsum:api:1.0'
+    compileOnly 'com.craftlyworks.hypsum:api:1.1'
 }
 ```
 
@@ -50,7 +50,7 @@ Add this to your `pom.xml`:
 <dependency>
     <groupId>com.craftlyworks.hypsum</groupId>
     <artifactId>api</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <scope>provided</scope>
 </dependency>
 ```
@@ -64,16 +64,14 @@ import com.craftlyworks.hypsum.api.HypsumProvider;
 import com.craftlyworks.hypsum.api.placeholder.Placeholder;
 
 HypsumApi api = HypsumProvider.get();
-api.
-
-registerPlaceholder(new Placeholder() {
+api.registerPlaceholder(new Placeholder() {
     @Override
-    public String getIdentifier () {
+    public String getIdentifier() {
         return "my_placeholder";
     }
 
     @Override
-    public String getValue (PlayerRef player){
+    public String getValue(PlayerRef player) {
         return "Hello, " + player.getDisplayName();
     }
 });
