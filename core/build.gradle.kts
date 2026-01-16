@@ -22,10 +22,6 @@
  * SOFTWARE.
  */
 
-plugins {
-    id("java")
-}
-
 dependencies {
     implementation(project(":api"))
     compileOnly(files("../plugin/libraries/HytaleServer.jar"))

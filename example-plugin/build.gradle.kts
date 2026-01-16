@@ -22,13 +22,9 @@
  * SOFTWARE.
  */
 
-plugins {
-    id("java")
-    id("com.gradleup.shadow") version "9.3.1"
-}
 
 dependencies {
-    implementation(project(":api"))
+    compileOnly(project(":api"))
     compileOnly(files("../plugin/libraries/HytaleServer.jar"))
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -37,12 +33,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.shadowJar {
-    archiveClassifier.set("")
-}
-
-tasks.build {
-    dependsOn(tasks.shadowJar)
 }

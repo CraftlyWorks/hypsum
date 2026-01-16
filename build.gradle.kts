@@ -22,11 +22,43 @@
  * SOFTWARE.
  */
 
+plugins {
+    id("com.gradleup.nmcp")
+    id("java-library")
+    id("maven-publish")
+    id("signing")
+}
+
 allprojects {
     group = "com.craftlyworks.hypsum"
-    version = "1.0-SNAPSHOT"
+    version = "1.0"
 
     repositories {
         mavenCentral()
     }
+}
+
+subprojects {
+    apply(plugin = "java")
+    apply(plugin = "java-library")
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(21))
+            vendor.set(JvmVendorSpec.AZUL)
+        }
+    }
+
+    tasks.withType<JavaCompile>().configureEach {
+        options.release.set(21)
+    }
+
+    configure<JavaPluginExtension> {
+        withSourcesJar()
+        withJavadocJar()
+    }
+
+    if (name == "example-plugin") return@subprojects
+    apply(plugin = "maven-publish")
+    apply(plugin = "signing")
 }

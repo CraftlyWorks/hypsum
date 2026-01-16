@@ -2,33 +2,60 @@
 
 hypsum is a simple way to add placeholders to Hytale servers. It lets you show dynamic information in messages and text.
 
-## 🏗 Project Structure
+# 🏗 Project Structure
 
 - **[`api`](api/)**: What you use to make your own placeholders.
 - **[`core`](core/)**: How the placeholders are actually handled.
 - **[`plugin`](plugin/)**: The main plugin you install on your server.
 - **[`example-plugin`](example-plugin/)**: A simple example to show you how it works.
 
-## 🚀 Features
+# 🚀 Features
 
 - **⚡ Fast**: Works quickly without slowing down your server.
 - **🛡 Safe**: No infinite loops or broken messages.
 - **👤 Player Names**: Can show different things for different players.
 - **⚙️ Customizable**: Change how your placeholders look (like using `{}` instead of `%%`).
 
-## 💻 Developer Guide
+# 💻 Developer Guide
 
-### 📦 Add to your project
+The latest version of Hypsum API is `1.0`.
+Add Hypsum API to your project using your build tool of choice.
 
-Add this to your `build.gradle.kts`:
+## 🐘 Gradle
+
+Add this to your `build.gradle` or `build.gradle.kts`:
+
+### Kotlin
 
 ```kotlin
 dependencies {
-    compileOnly("com.craftlyworks.hypsum:api:1.0-SNAPSHOT")
+    compileOnly("com.craftlyworks.hypsum:api:1.0")
 }
 ```
 
-### 📝 Create a Placeholder
+### Groovy
+
+```groovy
+dependencies {
+    compileOnly 'com.craftlyworks.hypsum:api:1.0'
+}
+```
+
+## 🦢 Maven
+
+Add this to your `pom.xml`:
+
+```xml
+
+<dependency>
+    <groupId>com.craftlyworks.hypsum</groupId>
+    <artifactId>api</artifactId>
+    <version>1.0</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+## 📝 Create a Placeholder
 
 Here is how you add a new placeholder:
 
@@ -36,7 +63,8 @@ Here is how you add a new placeholder:
 import com.craftlyworks.hypsum.api.HypsumProvider;
 import com.craftlyworks.hypsum.api.placeholder.Placeholder;
 
-HypsumProvider.get().
+HypsumApi api = HypsumProvider.get();
+api.
 
 registerPlaceholder(new Placeholder() {
     @Override
@@ -51,7 +79,7 @@ registerPlaceholder(new Placeholder() {
 });
 ```
 
-### 🔍 Use your Placeholders
+## 🔍 Use your Placeholders
 
 To replace placeholders in a string:
 
@@ -61,13 +89,13 @@ String result = HypsumProvider.get().process(player, text);
 // Result: "Welcome Hello, PlayerName!"
 ```
 
-## 🛠 Building
+# 🛠 Building
 
-To build the project:
+To build the project, we use Gradle and Java 25+. Run this command in the root directory:
 
 ```bash
 ./gradlew build
 ```
 
 ---
-© 2026 CraftlyWorks
+© 2026 CraftlyWorks | Licensed under MIT License

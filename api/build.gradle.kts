@@ -22,10 +22,6 @@
  * SOFTWARE.
  */
 
-plugins {
-    id("java")
-}
-
 dependencies {
     compileOnly(files("../plugin/libraries/HytaleServer.jar"))
     testImplementation(files("../plugin/libraries/HytaleServer.jar"))
@@ -36,4 +32,58 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+configure<PublishingExtension> {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+
+            pom {
+                name.set(project.name)
+                description.set("Hypsum - A lightweight placeholder engine for Hytale")
+                url.set("https://github.com/CraftlyWorks/hypsum")
+
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
+                }
+
+                developers {
+                    developer {
+                        id.set("CraftlyWorks")
+                        name.set("CraftlyWorks")
+                        email.set("contact@craftlyworks.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/CraftlyWorks/hypsum.git")
+                    developerConnection.set("scm:git:ssh://github.com/CraftlyWorks/hypsum.git")
+                    url.set("https://github.com/CraftlyWorks/hypsum")
+                }
+            }
+        }
+    }
+}
+
+signing {
+    val signingKey = System.getenv("GPG_SIGNING_KEY")
+    val signingPassword = System.getenv("GPG_SIGNING_PASSWORD")
+
+    if (!signingKey.isNullOrBlank() && !signingPassword.isNullOrBlank()) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign(publishing.publications)
+    } else {
+        logger.warn("GPG key or password not set! Artifacts will not be signed.")
+    }
+}
+
+nmcp {
+    publishAllPublicationsToCentralPortal {
+        username.set(findProperty("centralUsername") as String)
+        password.set(findProperty("centralPassword") as String)
+    }
 }
