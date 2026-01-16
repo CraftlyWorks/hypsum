@@ -27,14 +27,18 @@ package com.craftlyworks.hypsum.example;
 import com.craftlyworks.hypsum.api.HypsumApi;
 import com.craftlyworks.hypsum.api.HypsumProvider;
 import com.craftlyworks.hypsum.api.placeholder.Placeholder;
-import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.Message;
+import com.hypixel.hytale.server.core.event.events.player.PlayerChatEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
-import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class ExamplePlugin extends JavaPlugin {
 
-    public ExamplePlugin(@NonNullDecl JavaPluginInit init) {
+    public ExamplePlugin(@Nonnull JavaPluginInit init) {
         super(init);
     }
 
@@ -49,13 +53,19 @@ public class ExamplePlugin extends JavaPlugin {
                 }
 
                 @Override
-                public String getValue(Player player) {
-                    return "Hello " + player.getDisplayName() + " from Example Plugin!";
+                public String getValue(@Nullable PlayerRef player) {
+                    if (player == null) {
+                        return "Hello Guest from Example Plugin!";
+                    }
+                    return "Hello " + player.getUsername() + " from Example Plugin!";
                 }
             });
-
-            // Demonstrate how to use the API to process a string
-            // String processed = api.process(somePlayer, "Welcome %example_hello%!");
         }
+        this.getEventRegistry().registerGlobal(PlayerChatEvent.class, event -> {
+            PlayerRef player = event.getSender();
+            String originalMessage = event.getContent();
+            String processedMessage = api != null ? api.process(player, originalMessage) : null;
+            player.sendMessage(Message.raw(processedMessage != null ? processedMessage : ""));
+        });
     }
 }

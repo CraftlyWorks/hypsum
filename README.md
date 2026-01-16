@@ -18,7 +18,7 @@ hypsum is a simple way to add placeholders to Hytale servers. It lets you show d
 
 # 💻 Developer Guide
 
-The latest version of Hypsum API is `1.0`.
+The latest version of Hypsum API is `1.1`.
 Add Hypsum API to your project using your build tool of choice.
 
 ## 🐘 Gradle
@@ -73,7 +73,7 @@ registerPlaceholder(new Placeholder() {
     }
 
     @Override
-    public String getValue (Player player){
+    public String getValue (PlayerRef player){
         return "Hello, " + player.getDisplayName();
     }
 });

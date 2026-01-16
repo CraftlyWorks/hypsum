@@ -27,7 +27,7 @@ package com.craftlyworks.hypsum.core.placeholder;
 import com.craftlyworks.hypsum.api.placeholder.Placeholder;
 import com.craftlyworks.hypsum.core.exception.DuplicatePlaceholderException;
 import com.craftlyworks.hypsum.core.exception.InvalidEngineException;
-import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -56,7 +56,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 // In a real scenario we'd use player.getDisplayName()
                 // but for testing we just check if it's NOT null or some other logic
                 return player != null ? "MockPlayer" : "Unknown";
@@ -79,7 +79,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return "v1";
             }
         };
@@ -91,7 +91,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return "v2";
             }
         };
@@ -111,7 +111,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return "v";
             }
         };
@@ -128,7 +128,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return "and %second%";
             }
         });
@@ -139,7 +139,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return "value";
             }
         });
@@ -159,7 +159,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return "success";
             }
         });
@@ -180,7 +180,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return "value";
             }
         });
@@ -200,7 +200,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 return null;
             }
         });
@@ -218,7 +218,7 @@ class PlaceholderEngineTest {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(PlayerRef player) {
                 throw new RuntimeException("Explosion!");
             }
         });

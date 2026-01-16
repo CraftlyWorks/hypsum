@@ -21,10 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+repositories {
+    mavenCentral()
+}
 
 dependencies {
-    compileOnly(project(":api"))
+    compileOnly("com.craftlyworks.hypsum:api:1.1")
+
+    //compileOnly(project(":api"))
     compileOnly(files("../plugin/libraries/HytaleServer.jar"))
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

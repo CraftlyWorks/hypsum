@@ -1,13 +1,15 @@
 {
   "Group": "com.craftlyworks.hypsum",
-  "Name": "Hypsum",
+  "Name": "ExamplePlugin",
   "Version": "1.1.0",
-  "Description": "A lightweight placeholder API for Hytale plugins.",
+  "Description": "Example implementation of Hypsum.",
   "Author": "CraftlyWorks",
   "Website": "https://github.com/CraftlyWorks/hypsum",
   "ServerVersion": "*",
-  "Dependencies": {},
+  "Dependencies": {
+    "com.craftlyworks.hypsum:Hypsum": ">=1.1.0"
+  },
   "OptionalDependencies": {},
   "DisabledByDefault": false,
-  "Main": "com.craftlyworks.hypsum.plugin.HypsumPlugin"
+  "Main": "com.craftlyworks.hypsum.example.ExamplePlugin"
 }

@@ -31,7 +31,7 @@ plugins {
 
 allprojects {
     group = "com.craftlyworks.hypsum"
-    version = "1.0"
+    version = "1.1"
 
     repositories {
         mavenCentral()
@@ -44,13 +44,13 @@ subprojects {
 
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(21))
+            languageVersion.set(JavaLanguageVersion.of(25))
             vendor.set(JvmVendorSpec.AZUL)
         }
     }
 
     tasks.withType<JavaCompile>().configureEach {
-        options.release.set(21)
+        options.release.set(25)
     }
 
     configure<JavaPluginExtension> {

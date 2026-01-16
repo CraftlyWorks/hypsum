@@ -30,12 +30,12 @@ import com.craftlyworks.hypsum.core.placeholder.PlaceholderEngine;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.basecommands.CommandBase;
-import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
-import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.logging.Level;
 
 public class HypsumPlugin extends JavaPlugin {
@@ -58,13 +58,13 @@ public class HypsumPlugin extends JavaPlugin {
             }
 
             @Override
-            public String getValue(Player player) {
+            public String getValue(@Nullable PlayerRef player) {
                 return "Hypsum is working!";
             }
         });
         this.getCommandRegistry().registerCommand(new CommandBase("hypsum", "Test Hypsum placeholder processing") {
             @Override
-            protected void executeSync(@NonNullDecl CommandContext ctx) {
+            protected void executeSync(@Nonnull CommandContext ctx) {
                 String process = engine.process(null, "This is a test: %hypsum_test%");
                 ctx.sender().sendMessage(Message.raw("Original: %hypsum_test% | Processed: " + process));
             }

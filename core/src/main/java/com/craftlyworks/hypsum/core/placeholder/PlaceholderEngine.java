@@ -29,7 +29,7 @@ import com.craftlyworks.hypsum.api.placeholder.Placeholder;
 import com.craftlyworks.hypsum.core.exception.DuplicatePlaceholderException;
 import com.craftlyworks.hypsum.core.exception.InvalidEngineException;
 import com.hypixel.hytale.logger.HytaleLogger;
-import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -88,7 +88,7 @@ public class PlaceholderEngine implements HypsumApi {
     }
 
     @Override
-    public String process(@Nullable Player player, @Nonnull String text) {
+    public String process(@Nullable PlayerRef player, @Nonnull String text) {
         return PlaceholderProcessor.process(player, text, placeholders, delimiter);
     }
 

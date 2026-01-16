@@ -25,7 +25,7 @@
 package com.craftlyworks.hypsum.core.placeholder;
 
 import com.craftlyworks.hypsum.api.placeholder.Placeholder;
-import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -37,7 +37,7 @@ public class PlaceholderProcessor {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    public static @Nonnull String process(@Nullable Player player, @Nonnull String text, @Nonnull Map<String, Placeholder> placeholders, char delimiter) {
+    public static @Nonnull String process(@Nullable PlayerRef player, @Nonnull String text, @Nonnull Map<String, Placeholder> placeholders, char delimiter) {
         if (text.isEmpty() || placeholders.isEmpty()) {
             return text;
         }
@@ -81,7 +81,7 @@ public class PlaceholderProcessor {
         return builder.toString();
     }
 
-    private static String getSafeValue(@Nonnull Placeholder placeholder, @Nullable Player player) {
+    private static String getSafeValue(@Nonnull Placeholder placeholder, @Nullable PlayerRef player) {
         try {
             String value = placeholder.getValue(player);
             return value != null ? value : "UNKNOWN";

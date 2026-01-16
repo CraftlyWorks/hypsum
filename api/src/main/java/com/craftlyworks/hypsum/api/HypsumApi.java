@@ -25,7 +25,7 @@
 package com.craftlyworks.hypsum.api;
 
 import com.craftlyworks.hypsum.api.placeholder.Placeholder;
-import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -61,7 +61,7 @@ public interface HypsumApi {
      * @param text   the text to process
      * @return the processed text with placeholders replaced
      */
-    String process(@Nullable Player player, @Nonnull String text);
+    String process(@Nullable PlayerRef player, @Nonnull String text);
 
     /**
      * Checks if the API instance is still valid.

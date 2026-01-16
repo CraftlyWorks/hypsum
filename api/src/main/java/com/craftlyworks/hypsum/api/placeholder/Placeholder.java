@@ -24,10 +24,12 @@
 
 package com.craftlyworks.hypsum.api.placeholder;
 
-import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
+
+import javax.annotation.Nullable;
 
 public interface Placeholder {
     String getIdentifier();
 
-    String getValue(Player player);
+    String getValue(@Nullable PlayerRef player);
 }
