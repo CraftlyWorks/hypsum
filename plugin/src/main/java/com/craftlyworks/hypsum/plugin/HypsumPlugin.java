@@ -25,9 +25,15 @@
 package com.craftlyworks.hypsum.plugin;
 
 import com.craftlyworks.hypsum.api.HypsumProvider;
+import com.craftlyworks.hypsum.api.placeholder.Placeholder;
 import com.craftlyworks.hypsum.core.placeholder.PlaceholderEngine;
+import com.hypixel.hytale.server.core.Message;
+import com.hypixel.hytale.server.core.command.system.CommandContext;
+import com.hypixel.hytale.server.core.command.system.basecommands.CommandBase;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
 import javax.annotation.Nonnull;
 import java.util.logging.Level;
@@ -44,11 +50,32 @@ public class HypsumPlugin extends JavaPlugin {
     @Override
     protected void start() {
         super.start();
+        //---- Default test placeholder ----//
+        this.engine.registerPlaceholder(new Placeholder() {
+            @Override
+            public String getIdentifier() {
+                return "hypsum_test";
+            }
+
+            @Override
+            public String getValue(Player player) {
+                return "Hypsum is working!";
+            }
+        });
+        this.getCommandRegistry().registerCommand(new CommandBase("hypsum", "Test Hypsum placeholder processing") {
+            @Override
+            protected void executeSync(@NonNullDecl CommandContext ctx) {
+                String process = engine.process(null, "This is a test: %hypsum_test%");
+                ctx.sender().sendMessage(Message.raw("Original: %hypsum_test% | Processed: " + process));
+            }
+        });
         this.getLogger().at(Level.INFO).log("Hypsum plugin started!");
     }
 
     @Override
     protected void shutdown() {
+        this.engine.unregisterPlaceholder("hypsum_test");
+
         HypsumProvider.unregister();
         this.engine.invalidate();
         super.shutdown();
