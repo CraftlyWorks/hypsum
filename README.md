@@ -87,6 +87,18 @@ String result = HypsumProvider.get().process(player, text);
 // Result: "Welcome Hello, PlayerName!"
 ```
 
+Make sure to add Hypsum as a dependency in your plugin `manifest.json` to use these features.
+If you want an optional integration, use `OptionalDependencies` instead.
+```json
+{
+  "Dependencies": {
+    "com.craftlyworks.hypsum:Hypsum": ">=1.1"
+  }
+}
+```
+Enjoy coding with Hypsum! 🔥
+
+
 # 🛠 Building
 
 To build the project, we use Gradle and Java 25+. Run this command in the root directory:

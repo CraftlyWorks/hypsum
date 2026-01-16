@@ -1,7 +1,7 @@
 {
   "Group": "com.craftlyworks.hypsum",
   "Name": "Hypsum",
-  "Version": "1.1.0",
+  "Version": "1.1",
   "Description": "A lightweight placeholder API for Hytale plugins.",
   "Author": "CraftlyWorks",
   "Website": "https://github.com/CraftlyWorks/hypsum",

@@ -1,13 +1,13 @@
 {
   "Group": "com.craftlyworks.hypsum",
   "Name": "ExamplePlugin",
-  "Version": "1.1.0",
+  "Version": "1.1",
   "Description": "Example implementation of Hypsum.",
   "Author": "CraftlyWorks",
   "Website": "https://github.com/CraftlyWorks/hypsum",
   "ServerVersion": "*",
   "Dependencies": {
-    "com.craftlyworks.hypsum:Hypsum": ">=1.1.0"
+    "com.craftlyworks.hypsum:Hypsum": ">=1.1"
   },
   "OptionalDependencies": {},
   "DisabledByDefault": false,
