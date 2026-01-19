@@ -1,6 +1,8 @@
+![](https://cf.way2muchnoise.eu/title/1431708.svg)
+![](https://cf.way2muchnoise.eu/full_1431708_downloads.svg)
 # hypsum
 
-hypsum is a simple way to add placeholders to Hytale servers. It lets you show dynamic information in messages and text.
+[hypsum](https://www.curseforge.com/hytale/mods/hypsum) is a simple way to add placeholders to Hytale servers. It lets you show dynamic information in messages and text.
 
 # 🏗 Project Structure
 
